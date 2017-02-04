@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"../../sass/main.scss",
+		"../../sass/_fonts.scss",
+		"../../sass/_colors.scss",
+		"../../sass/_variables.scss"
+	],
+	"names": [],
+	"mappings": "ACAA,OAAO,CAAC,qDAAI;AAEZ,AAAA,IAAI,CAAC;EACH,WAAW,EAAE,oBAAoB,GAClC"
+}
