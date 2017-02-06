@@ -2,8 +2,9 @@
 
 let bot = {
 	apiToken: process.env.API_TOKEN,
-	name: "chore-bot",
+	name: "chorebot",
 	emoji: ":unicorn_face:",
+	channel: "general",
 };
 module.exports.bot = bot;
 

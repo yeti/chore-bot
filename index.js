@@ -2,21 +2,29 @@
 
 let express = require('express');
 let app = express();
+let ChoreBot = require('./lib/choreBot');
 
-let bot = require('./lib/bot.js');
 
-app.set('port', (process.env.PORT || 5000));
+// Bot
 
-app.use(express.static(__dirname + '/public'));
+let choreBot = new ChoreBot()
+	.then(() => {
 
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+		// Server
 
-app.get('/', function(request, response) {
-	response.render('pages/index');
-});
+		app.set('port', (process.env.PORT || 5000));
 
-app.listen(app.get('port'), function() {
-	console.log('Node app is running on port', app.get('port'));
-});
+		app.use(express.static(__dirname + '/public'));
+
+		// views is directory for all template files
+		app.set('views', __dirname + '/views');
+		app.set('view engine', 'ejs');
+
+		app.get('/', function(request, response) {
+			response.render('pages/index');
+		});
+
+		app.listen(app.get('port'), function() {
+			console.log('Node app is running on port', app.get('port'));
+		});
+	});
