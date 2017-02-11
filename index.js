@@ -21,7 +21,9 @@ let choreBot = new ChoreBot()
 		app.set('view engine', 'ejs');
 
 		app.get('/', function(request, response) {
-			response.render('pages/index');
+			response.render('pages/index', {
+				choreBot: choreBot
+			});
 		});
 
 		app.listen(app.get('port'), function() {
