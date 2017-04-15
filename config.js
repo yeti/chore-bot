@@ -1,16 +1,22 @@
 'use strict';
 
-let bot = {
-	apiToken: process.env.API_TOKEN,
-	name: "chorebot",
-	emoji: ":unicorn_face:",
-	channel: process.env.CHANNEL,
-	debugChannel: process.env.DEBUG_CHANNEL,
+let slack = {
+  token: process.env.SLACK_TOKEN,
+  name: "chorebot",
+  emoji: ":unicorn_face:",
+  channel: process.env.CHANNEL,
+  debugChannel: process.env.DEBUG_CHANNEL,
 };
-module.exports.bot = bot;
+module.exports.slack = slack;
 
 let db = {
-	choresKey: process.env.CHORES_KEY,
-	usersKey: process.env.USERS_KEY,
+  token: process.env.DB_TOKEN,
+  choresWorksheetId: 'chores',
+  peopleWorksheetId: 'people',
 };
 module.exports.db = db;
+
+let recast = {
+  token: process.env.RECAST_TOKEN,
+};
+module.exports.recast = recast;

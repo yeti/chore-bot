@@ -6,12 +6,26 @@
 
 <body>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    CHORE BOT
+<div class="container">
+  <div class="title">
+    PING BOT
   </div>
   <div class="data">
-    <%= choreBot %>
+    <div class="data__apps">
+      <div class="data__apps__title">
+        Apps
+      </div>
+      <% for (var i = 0; i < bot.apps.length; i++) { %>
+        <div class="data__apps__item">
+          <div class="data__apps__item__domain-name">
+            <%= bot.apps[i].domainName %>
+          </div>
+          <div class="data__apps__item__wake-up-time">
+            Wakes up at <%= bot.apps[i].wakeUpTime %>
+          </div>
+        </div>
+      <% } %>
+    </div>
   </div>
 </div>
 

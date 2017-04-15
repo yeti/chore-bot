@@ -1,8 +1,8 @@
 {
-	"name": "chore-bot",
-	"description": "",
-	"repository": "",
-	"logo": "",
-	"keywords": [],
-	"image": "heroku/nodejs"
+  "name": "chore-bot",
+  "description": "",
+  "repository": "",
+  "logo": "",
+  "keywords": [],
+  "image": "heroku/nodejs"
 }

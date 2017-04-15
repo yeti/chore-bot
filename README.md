@@ -1,1 +1,1 @@
-# chore-bot
+# ping-bot
