@@ -1,17 +1,18 @@
 'use strict';
-/*
+
 process.env.SILENT = true;
 
 let chai = require('chai');
 chai.should();
+let assert = chai.assert;
 
 let sinon = require('sinon');
 
-let PingBot = require('../lib/ping-bot');
+let ChoreBot = require('../lib/chore-bot');
 
 let appSpreadsheet = require('./data/app-spreadsheet');
 
-describe('ping-bot', function() {
+describe('db', function() {
   let clock;
   let spy;
   let requestStub;
@@ -20,15 +21,14 @@ describe('ping-bot', function() {
   let bot;
   let getDocStub;
 
-
   let requestMock = {
     get: (endpoint) => {},
   };
 
   beforeEach(function() {
     // runs before each test in this block
-    bot = new PingBot();
-    getDocStub = sinon.stub(bot.database, "getGoogleSpreadsheet", () => (appSpreadsheet));
+    bot = new ChoreBot();
+    getDocStub = sinon.stub(bot.database, "getSpreadsheet", () => (appSpreadsheet));
   });
 
   afterEach(function() {
@@ -41,40 +41,38 @@ describe('ping-bot', function() {
     clock = sinon.useFakeTimers(now.setHours(hour));
   }
 
-  it('should load apps', function(done) {
+  it('should load spreadsheet', function(done) {
     // Given
-    requestStub = sinon.stub(bot, "getRequest", () => (requestMock));
 
     // When
     bot.init()
       .then(() => {
         // Then
-        bot.scheduler.jobs.should.have.lengthOf(4);
-        bot.apps.should.have.lengthOf(4);
+        bot.chores.should.have.lengthOf(2);
+        bot.persons.should.have.lengthOf(4);
 
-        let apps = bot.apps;
+        let chores = bot.chores;
 
-        apps[0].wakeUpTime.should.equal(0);
-        apps[0].domainName.should.equal('bot-1');
-        apps[0].endPoint.should.equal('http://bot-1.herokuapp.com');
+        chores[0].name.should.equal('chore 1');
+        chores[0].frequency.should.equal('0 17 * * 2');
+        // apps[0].prettyFrequency.should.equal('http://bot-1.herokuapp.com');
+        chores[0].assignees.length.should.equal(3);
+        // chores[0].assignees.should.equal(['guy f', 'jimmy', 'nico']);
+        chores[0].reminder.should.equal('Do chore 1, pls');
 
-        apps[1].wakeUpTime.should.equal(8);
-        apps[1].domainName.should.equal('bot-2');
-        apps[1].endPoint.should.equal('http://bot-2.herokuapp.com');
+        chores[1].name.should.equal('chore 2');
+        chores[1].frequency.should.equal('*/10 * * * * *');
+        // apps[1].prettyFrequency.should.equal('http://bot-1.herokuapp.com');
+        chores[1].assignees.length.should.equal(2);
+        // chores[1].assignees.should.equal(['unknown person', 'randy']);
+        chores[1].reminder.should.equal('Hey, clean the stuff');
 
-        apps[2].wakeUpTime.should.equal(16);
-        apps[2].domainName.should.equal('bot-3');
-        apps[2].endPoint.should.equal('http://bot-3.herokuapp.com');
-
-        apps[3].wakeUpTime.should.equal(5);
-        apps[3].domainName.should.equal('my-app');
-        apps[3].endPoint.should.equal('http://my-app.herokuapp.com');
-
-        requestStub.restore();
         done();
+      }).catch(e => {
+        console.dir(`Error ${e}`);
       });
   });
-
+/*
   it('should schedule apps', function(done) {
     // Given
     requestStub = sinon.stub(bot, "getRequest", () => (requestMock));
@@ -117,5 +115,5 @@ describe('ping-bot', function() {
     spy.restore();
     done();
   });
+  */
 });
-*/
