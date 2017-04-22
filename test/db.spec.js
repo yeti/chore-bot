@@ -68,52 +68,53 @@ describe('db', function() {
         chores[1].reminder.should.equal('Hey, clean the stuff');
 
         done();
-      }).catch(e => {
+      })
+      .catch(e => {
         console.dir(`Error ${e}`);
       });
   });
-/*
-  it('should schedule apps', function(done) {
-    // Given
-    requestStub = sinon.stub(bot, "getRequest", () => (requestMock));
+  /*
+    it('should schedule apps', function(done) {
+      // Given
+      requestStub = sinon.stub(bot, "getRequest", () => (requestMock));
 
-    spy = sinon.spy(requestMock, "get");
-    setTime(6);
+      spy = sinon.spy(requestMock, "get");
+      setTime(6);
 
-    // When
-    bot.apps = [{
-        wakeUpTime: 0,
-        endPoint: 'http://bot-1.herokuapp.com',
-      },
-      {
-        wakeUpTime: 8,
-        endPoint: 'http://bot-2.herokuapp.com',
-      },
-      {
-        wakeUpTime: 16,
-        endPoint: 'http://bot-3.herokuapp.com',
-      },
-      {
-        wakeUpTime: 5,
-        endPoint: 'http://my-app.herokuapp.com',
-      },
-    ];
-    bot.scheduleApps();
+      // When
+      bot.apps = [{
+          wakeUpTime: 0,
+          endPoint: 'http://bot-1.herokuapp.com',
+        },
+        {
+          wakeUpTime: 8,
+          endPoint: 'http://bot-2.herokuapp.com',
+        },
+        {
+          wakeUpTime: 16,
+          endPoint: 'http://bot-3.herokuapp.com',
+        },
+        {
+          wakeUpTime: 5,
+          endPoint: 'http://my-app.herokuapp.com',
+        },
+      ];
+      bot.scheduleApps();
 
-    clock.tick(1000 * 60 * 5);
+      clock.tick(1000 * 60 * 5);
 
-    // Then
-    spy.calledThrice.should.be.true;
-    spy.getCall(0)
-      .args[0].should.equal('http://bot-1.herokuapp.com');
-    spy.getCall(1)
-      .args[0].should.equal('http://bot-3.herokuapp.com');
-    spy.getCall(2)
-      .args[0].should.equal('http://my-app.herokuapp.com');
+      // Then
+      spy.calledThrice.should.be.true;
+      spy.getCall(0)
+        .args[0].should.equal('http://bot-1.herokuapp.com');
+      spy.getCall(1)
+        .args[0].should.equal('http://bot-3.herokuapp.com');
+      spy.getCall(2)
+        .args[0].should.equal('http://my-app.herokuapp.com');
 
-    requestStub.restore();
-    spy.restore();
-    done();
-  });
-  */
+      requestStub.restore();
+      spy.restore();
+      done();
+    });
+    */
 });

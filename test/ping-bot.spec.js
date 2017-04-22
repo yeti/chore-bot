@@ -2,26 +2,26 @@
 /*
 process.env.SILENT = true;
 
-let chai = require('chai');
+const chai = require('chai');
 chai.should();
 
-let sinon = require('sinon');
+const sinon = require('sinon');
 
-let PingBot = require('../lib/ping-bot');
+const PingBot = require('../lib/ping-bot');
 
-let appSpreadsheet = require('./data/app-spreadsheet');
+const appSpreadsheet = require('./data/app-spreadsheet');
 
 describe('ping-bot', function() {
-  let clock;
-  let spy;
-  let requestStub;
-  let queryStub;
-  let db;
-  let bot;
-  let getDocStub;
+  const clock;
+  const spy;
+  const requestStub;
+  const queryStub;
+  const db;
+  const bot;
+  const getDocStub;
 
 
-  let requestMock = {
+  const requestMock = {
     get: (endpoint) => {},
   };
 
@@ -37,7 +37,7 @@ describe('ping-bot', function() {
   });
 
   function setTime(hour) {
-    let now = new Date();
+    const now = new Date();
     clock = sinon.useFakeTimers(now.setHours(hour));
   }
 
@@ -52,7 +52,7 @@ describe('ping-bot', function() {
         bot.scheduler.jobs.should.have.lengthOf(4);
         bot.apps.should.have.lengthOf(4);
 
-        let apps = bot.apps;
+        const apps = bot.apps;
 
         apps[0].wakeUpTime.should.equal(0);
         apps[0].domainName.should.equal('bot-1');

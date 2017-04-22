@@ -1,17 +1,17 @@
 'use strict';
 
 // Imports
-let Tanuki = require('tanuki');
-let Mock = Tanuki.Mock;
+const Tanuki = require('tanuki');
+const Mock = Tanuki.Mock;
 
-let Info = Mock.Info;
-let GoogleSpreadsheet = Mock.GoogleSpreadsheet;
-let Worksheet = Mock.Worksheet;
+const Info = Mock.Info;
+const GoogleSpreadsheet = Mock.GoogleSpreadsheet;
+const Worksheet = Mock.Worksheet;
 
 // Test Data
-let error = false;
+const error = false;
 
-let choresWorksheet = new Worksheet('chores', '987654321', [{
+const choresWorksheet = new Worksheet('chores', '987654321', [{
     name: 'chore 1',
     frequency: '0 17 * * 2',
     assignees: 'guy f, jimmy, nico',
@@ -25,7 +25,7 @@ let choresWorksheet = new Worksheet('chores', '987654321', [{
   },
 ], false);
 
-let peopleWorksheet = new Worksheet('people', '987654321', [{
+const peopleWorksheet = new Worksheet('people', '987654321', [{
     name: 'guy f',
     username: 'guyf',
     isadmin: 'FALSE',
@@ -47,10 +47,10 @@ let peopleWorksheet = new Worksheet('people', '987654321', [{
   },
 ], false);
 
-let worksheets = [choresWorksheet, peopleWorksheet];
+const worksheets = [choresWorksheet, peopleWorksheet];
 
-let info = new Info(worksheets);
+const info = new Info(worksheets);
 
-let spreadsheet = new GoogleSpreadsheet('app-key-123412341234', info, error);
+const spreadsheet = new GoogleSpreadsheet('app-key-123412341234', info, error);
 
 module.exports = spreadsheet;

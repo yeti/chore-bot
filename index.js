@@ -1,12 +1,14 @@
 'use strict';
+global._ = require('lodash');
+global.config = require('./config');
 
-let express = require('express');
-let app = express();
+const express = require('express');
+const app = express();
 
-let ChoreBot = require('./lib/chore-bot');
+const ChoreBot = require('./lib/chore-bot');
 
 
-let bot = new ChoreBot();
+const bot = new ChoreBot();
 
 bot.init()
   .then(() => {

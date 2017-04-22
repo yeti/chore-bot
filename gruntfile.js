@@ -12,10 +12,10 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   // All js files
-  let jsFiles = ['*.js', '*.json', './lib/**/*.js', './test/**/*.js'];
+  const jsFiles = ['*.js', '*.json', './lib/**/*.js', './test/**/*.js'];
 
   // All js files
-  let sassFiles = ['src/sass/**/*.scss'];
+  const sassFiles = ['src/sass/**/*.scss'];
 
   grunt.initConfig({
 
@@ -28,7 +28,8 @@ module.exports = function(grunt) {
         expr: true,
         mocha: true,
         globals: { // Add global vars here
-          //browser: false,
+          _: true,
+          config: true,
         }
       },
       // Run this task for all js files
